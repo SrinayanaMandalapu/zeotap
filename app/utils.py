@@ -1,15 +1,17 @@
 import requests
 import datetime
 from app import db, app
+import os
 from app.models import Weather
-
+from dotenv import load_dotenv
+load_dotenv()
 high_temp_count = 0
 ALERT_THRESHOLD = 35
 
 def fetch_weather_data(city):
     global high_temp_count  # Use the global count variable
     with app.app_context():
-        api_key = '82d1136e27fc8eca88ad15a166defb96'
+        api_key = os.getenv('API_KEY')
         url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
 
         response = requests.get(url)
