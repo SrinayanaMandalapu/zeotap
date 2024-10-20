@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        table {
+            margin: 0 auto;
+            width: 50%;
+            border-collapse: collapse;
+            font-size: 18px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather Summary for {{ date }}</h1>
+    <table>
+        <tr>
+            <th>Metric</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Minimum Temperature</td>
+            <td>{{ min_temp if min_temp is not none else 'No Data' }}</td>
+        </tr>
+        <tr>
+            <td>Maximum Temperature</td>
+            <td>{{ max_temp if max_temp is not none else 'No Data' }}</td>
+        </tr>
+        <tr>
+            <td>Average Temperature</td>
+            <td>{{ avg_temp if avg_temp is not none else 'No Data' }}</td>
+        </tr>
+
+        <tr>
+            <td>Most Frequent Weather condition</td>
+            <td>{{ most_frequent_main if most_frequent_main is not none else 'No Data' }}</td>
+        </tr>
+    </table>
+    <a href="/visualizations">View Weather Visualizations</a>
+    <a href="/">Go Back</a>
+</body>
+</html>
